@@ -1,15 +1,16 @@
-name: Build EXE
+name: Build and Upload EXE
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: windows-latest
+
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+    - uses: actions/checkout@v3
 
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -18,15 +19,14 @@ jobs:
 
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
         pip install pyinstaller PyQt5
 
     - name: Build EXE
       run: |
         pyinstaller --onefile --windowed NeoRaedonDemo.py
 
-    - name: Upload EXE artifact
-      uses: actions/upload-artifact@v2
+    - name: Upload EXE
+      uses: actions/upload-artifact@v3
       with:
-        name: neo-raedon-dist
-        path: dist/
+        name: neo-raedon-output
+        path: dist/NeoRaedonDemo.exe
