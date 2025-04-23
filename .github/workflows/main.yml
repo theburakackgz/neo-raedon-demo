@@ -28,5 +28,5 @@ jobs:
     - name: Upload EXE artifact
       uses: actions/upload-artifact@v3
       with:
-        name: neo-raedon-exe
-        path: dist/NeoRaedonDemo.exe
+        name: neo-raedon-dist
+        path: dist/
