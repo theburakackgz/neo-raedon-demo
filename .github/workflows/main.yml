@@ -26,7 +26,7 @@ jobs:
         pyinstaller --onefile --windowed NeoRaedonDemo.py
 
     - name: Upload EXE artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v2
       with:
         name: neo-raedon-dist
         path: dist/
